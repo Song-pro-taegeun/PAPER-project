@@ -1,0 +1,11 @@
+jupyter
+langchain
+openai
+chromadb
+fastapi==0.101.0
+uvicorn==0.23.2
+pandas==2.0.3
+pydantic_core==2.4.0
+pydantic==1.10.12
+tiktoken
+PyPDF2
