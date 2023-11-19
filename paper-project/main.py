@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 from PyPDF2 import PdfReader
+from article_service.app.agent import run_langchain
+from langchain.globals import set_debug
+
+set_debug(True)
 
 app = Flask(__name__)
 count = 1
@@ -11,9 +15,14 @@ def upload_pdf():
         # 업로드된 파일 가져오기
         uploaded_file = request.files['pdf_file']
         # 파일이 있다면,
-        if uploaded_file.filename != '':
-            # 텍스트 추출 함수 호출
+        if uploaded_file.filename != '': 
+            # 텍스트 추출 함수 호 출
             pdf_text = extract_text_from_pdf(uploaded_file)
+
+            ### 전처리 코드가 들어가야됨 ###
+            pdf_text = run_langchain("요약해줘", pdf_text)
+
+
 
             # result.html 렌더링처리(pdf_text 값을 담아서 뿌려준다.)
             return render_template('result.html', pdf_text=pdf_text)
