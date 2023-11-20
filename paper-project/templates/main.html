@@ -25,50 +25,240 @@
       <li id="hanguk">한국일보</li>
     </div>
 
-    <!-- 결과창 -->
-    <div class="contents-wrap">
-      <div class="content-box">
+    <!-- 결과창 1 -->
+    <div class="contents-wrap0">
+      <div class="content-box" style="display: flex">
         <!-- 이미지 라인 -->
-        <div class="img-data"></div>
-        <div class="contents-data">
+        <div class="img-data0"></div>
+        <div class="contents-data0">
           <!-- 제목 라인 -->
-          <div class="title"></div>
-          <!-- 요약 라인 -->
-          <div class="content"></div>
+          <div class="title0"></div>
         </div>
       </div>
+      <!-- 요약 라인 -->
+      <div class="content0"></div>
     </div>
   </body>
+
+  <!-- 결과창 2 -->
+  <div class="contents-wrap1">
+    <div class="content-box1" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data1"></div>
+      <div class="contents-data1">
+        <!-- 제목 라인 -->
+        <div class="title1"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content1"></div>
+  </div>
+
+  <!-- 결과창 3 -->
+  <div class="contents-wrap2">
+    <div class="content-box2" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data2"></div>
+      <div class="contents-data2">
+        <!-- 제목 라인 -->
+        <div class="title2"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content2"></div>
+  </div>
+
+  <!-- 결과창 4 -->
+  <div class="contents-wrap3">
+    <div class="content-box3" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data3"></div>
+      <div class="contents-data3">
+        <!-- 제목 라인 -->
+        <div class="title3"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content3"></div>
+  </div>
+
+  <!-- 결과창 5 -->
+  <div class="contents-wrap4">
+    <div class="content-box4" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data4"></div>
+      <div class="contents-data4">
+        <!-- 제목 라인 -->
+        <div class="title4"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content4"></div>
+  </div>
+
+  <!-- 결과창 6 -->
+  <div class="contents-wrap5">
+    <div class="content-box5" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data5"></div>
+      <div class="contents-data5">
+        <!-- 제목 라인 -->
+        <div class="title5"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content5"></div>
+  </div>
+
+  <!-- 결과창 7 -->
+  <div class="contents-wrap6">
+    <div class="content-box6" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data6"></div>
+      <div class="contents-data6">
+        <!-- 제목 라인 -->
+        <div class="title6"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content6"></div>
+  </div>
+
+  <!-- 결과창 8 -->
+  <div class="contents-wrap7">
+    <div class="content-box7" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data7"></div>
+      <div class="contents-data7">
+        <!-- 제목 라인 -->
+        <div class="title7"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content7"></div>
+  </div>
+
+  <!-- 결과창 9 -->
+  <div class="contents-wrap8">
+    <div class="content-box8" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data8"></div>
+      <div class="contents-data8">
+        <!-- 제목 라인 -->
+        <div class="title8"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content8"></div>
+  </div>
+
+  <!-- 결과창 10 -->
+  <div class="contents-wrap9">
+    <div class="content-box9" style="display: flex">
+      <!-- 이미지 라인 -->
+      <div class="img-data9"></div>
+      <div class="contents-data9">
+        <!-- 제목 라인 -->
+        <div class="title9"></div>
+      </div>
+    </div>
+    <!-- 요약 라인 -->
+    <div class="content9"></div>
+  </div>
 
   <!-- jQuery 가져오기 -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
     $(document).ready(function () {
-      // 버튼 클릭 이벤트
+      // 경향신문 버튼 클릭 이벤트
+      $("#gyeonghyang").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=032"
+        );
+      });
+      // 국민일보 버튼 클릭 이벤트
+      $("#gukmin").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=005"
+        );
+      });
+      // 동아일보 버튼 클릭 이벤트
       $("#donga").click(function () {
-        // 서버에 데이터를 요청하는 AJAX 호출
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"
+        );
+      });
+      // 문화일보 버튼 클릭 이벤트
+      $("#munhwa").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=021"
+        );
+      });
+      // 서울신문 버튼 클릭 이벤트
+      $("#seoul").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=081"
+        );
+      });
+      // 세계일보 버튼 클릭 이벤트
+      $("#segye").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=022"
+        );
+      });
+      // 조선일보 버튼 클릭 이벤트
+      $("#joseon").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=023"
+        );
+      });
+      // 중앙일보 버튼 클릭 이벤트
+      $("#jungang").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=025"
+        );
+      });
+      // 한겨레 버튼 클릭 이벤트
+      $("#hangyeorye").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=028"
+        );
+      });
+      // 한국일보 버튼 클릭 이벤트
+      $("#hanguk").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=469"
+        );
+      });
+
+      function clickCategory(url) {
+        // AJAX 통신 시작~~!
         $.ajax({
           type: "POST",
           url: "/get_newsList",
           data: {
-            data1:
-              "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020",
+            data1: url,
           },
           success: function (response) {
-            console.log("data" + response);
-            // 성공 시 결과를 출력
-            $(".title").html(response[0].title);
-            // 이미지 삽입
-            $(".img-data").html(
-              '<img src="' + response[0].img + '" alt="Image">'
-            );
-            // href 삽입
-            $(".title").html(
-              '<a href="' + response[0].href + '">' + response[0].title + "</a>"
-            );
+            for (let i = 0; i < response.length; i++) {
+              // 이미지 삽입
+              $(".img-data" + i).html(
+                '<img src="' + response[i].img + '" alt="Image">'
+              );
+              // href 삽입
+              $(".title" + i).html(
+                '<a href="' +
+                  response[i].href +
+                  '">' +
+                  response[i].title +
+                  "</a>"
+              );
+              // 요약 삽입
+              $(".content" + i).html(response[i].content);
+            }
           },
         });
-      });
+      }
     });
   </script>
 </html>
