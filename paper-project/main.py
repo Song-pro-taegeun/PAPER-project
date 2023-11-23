@@ -88,6 +88,7 @@ def selectNewsList():
     # print(realContentList)
 
     # 8. 요약 데이터 담기
+    # realContentList -> summaryList 요약 내용채우기
     # 덕형이형 요 부분에 요약 태워야함 summaryList 이 배열에 담아야함
     # 본문은 realContentList이 배열에 10개가 담아져 있을거임.
     # for문 돌면서 담아야함.
