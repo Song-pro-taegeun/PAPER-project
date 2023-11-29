@@ -1,5 +1,5 @@
 jupyter
-langchain
+langchain==0.0.271
 openai
 chromadb
 fastapi==0.101.0
@@ -11,3 +11,4 @@ tiktoken
 PyPDF2
 BeautifulSoup
 OrderedDict
+asgiref

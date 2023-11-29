@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from PyPDF2 import PdfReader
-from article_service.app.agent import run_langchain
-from langchain.globals import set_debug
+import langchain
 import requests
 from bs4 import BeautifulSoup
 from collections import OrderedDict
+from article_service.app.tools.summary import reject_summarize, summarize
+import asyncio
 
+langchain.debug = True
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,7 +16,7 @@ def index():
 
 
 @app.route('/get_newsList', methods=['POST'])
-def selectNewsList():
+async def selectNewsList():
     # url = "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"
     # 1. ajax data 받아오기!!!!
     data = request.form.get('data1') 
@@ -87,22 +89,50 @@ def selectNewsList():
     realContentList = realContentsList(hrefList)
     # print(realContentList)
 
+
+
+    ###################################################
+    ############### 이덕형 작성부분 시작 ################
+    ###################################################
     # 8. 요약 데이터 담기
     # realContentList -> summaryList 요약 내용채우기
     # 덕형이형 요 부분에 요약 태워야함 summaryList 이 배열에 담아야함
     # 본문은 realContentList이 배열에 10개가 담아져 있을거임.
     # for문 돌면서 담아야함.
 
+    # async 처리를 통해 비동기로 요약 요청
+    run_func=[]
+    for content in realContentList:
+        if content=="태그가 다릅니다.":
+            run_func.append(reject_summarize())
+        else:
+            run_func.append(summarize(content))
+    summaryList = await asyncio.gather(*run_func)
+
+    # 테스트용 (원문과 요약 동시출력할 수 있도록 처리)
+    real_sum=[]
+    for r,s in zip(realContentList,summaryList):
+        real_sum.append("======원문======\\n" + r + "\\n\\n======요약======" + s)
+    ###################################################
+    ############### 이덕형 작성부분 끝 ################
+    ###################################################
+
+
+
+
     # 찐막 : 리턴 데이터에 가져온 데이터들을 오브젝트로 저장
     for i in range(len(titleList)):
-        item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : realContentList[i]}
+        # 원문 출력
+        # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : realContentList[i]}
+        # 요약문 출력
+        # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : summaryList[i]}
+        # 원문+요약문 출력
+        item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : real_sum[i]}
         # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i]}
         data_list.append(item)
 
     # print(data_list)
     return data_list
-
-
 
 
 def realContentsList(hrefList):
