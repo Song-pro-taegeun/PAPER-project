@@ -1,7 +1,7 @@
 from langchain.chat_models import ChatOpenAI
 
 # OPENAI_API_KEY = "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"
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "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"
 TEMPERATURE = 0
 LLM_NAME = "gpt-3.5-turbo-16k"
 
