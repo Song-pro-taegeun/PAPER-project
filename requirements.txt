@@ -9,6 +9,6 @@ pydantic_core==2.4.0
 pydantic==1.10.12
 tiktoken
 PyPDF2
-BeautifulSoup
+BeautifulSoup4
 OrderedDict
 asgiref
