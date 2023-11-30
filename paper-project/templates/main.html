@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>메인 페이지</title>
+    <title>요약 서비스</title>
+    <link rel="shortcut icon" href="#">
   </head>
   <body>
     <!-- 로고 -->
@@ -471,7 +472,7 @@
         // AJAX 통신 시작~~!
         $.ajax({
           type: "POST",
-          url: "/get_newsList",
+          url: "/get_newsList/",
           data: {
             data1: url,
           },

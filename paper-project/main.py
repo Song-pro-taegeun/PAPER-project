@@ -1,25 +1,28 @@
 from flask import Flask, render_template, request, jsonify
-from PyPDF2 import PdfReader
 import langchain
 import requests
 from bs4 import BeautifulSoup
 from collections import OrderedDict
 from article_service.app.tools.summary import reject_summarize, summarize
 import asyncio
+import time
 
 langchain.debug = True
 app = Flask(__name__)
-
+app.debug=True
 @app.route('/')
 def index():
     return render_template('main.html')
 
 
-@app.route('/get_newsList', methods=['POST'])
+@app.route('/get_newsList/', methods=['POST'])
+
 async def selectNewsList():
-    # url = "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"
+
+   # url = "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"
     # 1. ajax data 받아오기!!!!
     data = request.form.get('data1') 
+    
     url = data
     
     # 뉴스 오브젝트 배열~~!!(제목, 이미지, 이동 태그, 전체내용, 요약데이터(덕형이형 부분))
@@ -38,7 +41,8 @@ async def selectNewsList():
     summaryList = []
 
     # 1. 뉴스 리스트 페이지 가져오기
-    response = requests.get(url)
+    header = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0'}
+    response = requests.get(url=url, headers=header)
 
     # 2. 가져온 HTML을 BeautifulSoup으로 파싱
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -112,7 +116,7 @@ async def selectNewsList():
     # 테스트용 (원문과 요약 동시출력할 수 있도록 처리)
     real_sum=[]
     for r,s in zip(realContentList,summaryList):
-        real_sum.append("======원문======\\n" + r + "\\n\\n======요약======" + s)
+        real_sum.append("<br><br>======원문=====<br><br>" + r + "<br><br>======요약======<br><br>" + s)
     ###################################################
     ############### 이덕형 작성부분 끝 ################
     ###################################################
@@ -123,24 +127,28 @@ async def selectNewsList():
     # 찐막 : 리턴 데이터에 가져온 데이터들을 오브젝트로 저장
     for i in range(len(titleList)):
         # 원문 출력
-        # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : realContentList[i]}
+      #  item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : realContentList[i]}
         # 요약문 출력
         # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : summaryList[i]}
         # 원문+요약문 출력
         item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : real_sum[i]}
         # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i]}
         data_list.append(item)
-
-    # print(data_list)
+    print(f"returning below")
+    print(data_list)
     return data_list
 
 
 def realContentsList(hrefList):
+
     dataList = []
     for href in hrefList:
         url = href
-        response = requests.get(url)
+        header = {'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0'}
+
+        response = requests.get(url=url, headers=header)
         soup = BeautifulSoup(response.text, 'html.parser')
+        time.sleep(0.5)
 
         # article 태그의 아이디가 dic_arear것만
         dic_area_element = soup.find('article', {'id': 'dic_area'})
@@ -152,11 +160,15 @@ def realContentsList(hrefList):
         else:
             print("태그 요소를 찾을 수 없어 예외처리!!!")
             dataList.append('태그가 다릅니다.')
+    
+    print(f"returning below")
+    print(f"{dataList}")
     return dataList
     
 
 
-
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=9000, debug=True)
 
 
 # @app.route('/', methods=['GET', 'POST'])
