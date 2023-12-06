@@ -1,5 +1,5 @@
 jupyter
-langchain
+langchain==0.0.271
 openai
 chromadb
 fastapi==0.101.0
@@ -9,3 +9,6 @@ pydantic_core==2.4.0
 pydantic==1.10.12
 tiktoken
 PyPDF2
+BeautifulSoup4
+OrderedDict
+asgiref

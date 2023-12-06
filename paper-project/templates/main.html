@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>요약 서비스</title>
+    <link rel="shortcut icon" href="#">
+  </head>
+  <body>
+    <!-- 로고 -->
+    <div>
+      <img
+        src="../static/images/logo_icon.png"
+        style="width: 90px; margin-left: 50px"
+      />
+      <img
+        src="../static/images/news_text.png"
+        style="width: 220px; padding-left: 31%"
+      />
+    </div>
+    <!-- 언론사 리스트 -->
+    <div style="padding-top: 30px">
+      <div style="display: flex; justify-content: center">
+        <li id="gyeonghyang" style="padding-left: 30px; font-weight: bold">
+          경향신문
+        </li>
+        <li id="gukmin" style="padding-left: 30px; font-weight: bold">
+          국민일보
+        </li>
+        <li id="donga" style="padding-left: 30px; font-weight: bold">
+          동아일보
+        </li>
+        <li id="munhwa" style="padding-left: 30px; font-weight: bold">
+          문화일보
+        </li>
+        <li id="seoul" style="padding-left: 30px; font-weight: bold">
+          서울신문
+        </li>
+        <li id="segye" style="padding-left: 30px; font-weight: bold">
+          세계일보
+        </li>
+        <li id="joseon" style="padding-left: 30px; font-weight: bold">
+          조선일보
+        </li>
+        <li id="jungang" style="padding-left: 30px; font-weight: bold">
+          중앙일보
+        </li>
+        <li id="hangyeorye" style="padding-left: 30px; font-weight: bold">
+          한겨레
+        </li>
+        <li id="hanguk" style="padding-left: 30px; font-weight: bold">
+          한국일보
+        </li>
+      </div>
+    </div>
+    <br />
+
+    <div>
+      <!-- 상단 질문 답변 -->
+      <div class="qna-wrap">
+        <div calss="questions"></div>
+        <div class="answer"></div>
+      </div>
+      <br />
+      <!-- 결과창 1 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap0" style="margin: 10px">
+          <div class="content-box" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data0"></div>
+            <div
+              class="contents-data0"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title0" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content0"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 2 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap1" style="margin: 10px">
+          <div class="content-box1" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data1"></div>
+            <div
+              class="contents-data1"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title1" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content1"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 3 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap2" style="margin: 10px">
+          <div class="content-box2" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data2"></div>
+            <div
+              class="contents-data2"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title2" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content2"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 4 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap3" style="margin: 10px">
+          <div class="content-box3" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data3"></div>
+            <div
+              class="contents-data3"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title3" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content3"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 5 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap4" style="margin: 10px">
+          <div class="content-box4" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data4"></div>
+            <div
+              class="contents-data4"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title4" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content4"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 6 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap5" style="margin: 10px">
+          <div class="content-box5" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data5"></div>
+            <div
+              class="contents-data5"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title5" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content5"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 7 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap6" style="margin: 10px">
+          <div class="content-box6" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data6"></div>
+            <div
+              class="contents-data6"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title6" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content6"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 8 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap7" style="margin: 10px">
+          <div class="content-box7" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data7"></div>
+            <div
+              class="contents-data7"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title7" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content7"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 9 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap8" style="margin: 10px">
+          <div class="content-box8" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data8"></div>
+            <div
+              class="contents-data8"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title8" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content8"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+
+      <!-- 결과창 10 -->
+      <div
+        style="
+          margin-top: 25px;
+          margin-left: 60px;
+          margin-right: 60px;
+          border: 2px solid black;
+          border-radius: 5px;
+        "
+      >
+        <div class="contents-wrap9" style="margin: 10px">
+          <div class="content-box9" style="align-items: center; display: flex">
+            <!-- 이미지 라인 -->
+            <div class="img-data9"></div>
+            <div
+              class="contents-data9"
+              style="padding-left: 20px; margin-top: -30px"
+            >
+              <!-- 제목 라인 -->
+              <p style="font-size: 20px; font-weight: bold; color: gray">
+                기사 제목
+              </p>
+              <div class="title9" style="margin-top: -15px"></div>
+            </div>
+          </div>
+          <!-- 요약 라인 -->
+          <h4 style="color: gray">* 요약내용</h4>
+          <div
+            class="content9"
+            style="padding-top: 10px; margin-top: -15px"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- jQuery 가져오기 -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // 경향신문 버튼 클릭 이벤트
+      $("#gyeonghyang").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=032"
+        );
+      });
+      // 국민일보 버튼 클릭 이벤트
+      $("#gukmin").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=005"
+        );
+      });
+      // 동아일보 버튼 클릭 이벤트
+      $("#donga").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"
+        );
+      });
+      // 문화일보 버튼 클릭 이벤트
+      $("#munhwa").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=021"
+        );
+      });
+      // 서울신문 버튼 클릭 이벤트
+      $("#seoul").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=081"
+        );
+      });
+      // 세계일보 버튼 클릭 이벤트
+      $("#segye").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=022"
+        );
+      });
+      // 조선일보 버튼 클릭 이벤트
+      $("#joseon").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=023"
+        );
+      });
+      // 중앙일보 버튼 클릭 이벤트
+      $("#jungang").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=025"
+        );
+      });
+      // 한겨레 버튼 클릭 이벤트
+      $("#hangyeorye").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=028"
+        );
+      });
+      // 한국일보 버튼 클릭 이벤트
+      $("#hanguk").click(function () {
+        clickCategory(
+          "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=469"
+        );
+      });
+
+      function clickCategory(url) {
+        // AJAX 통신 시작~~!
+        $.ajax({
+          type: "POST",
+          url: "/get_newsList/",
+          data: {
+            data1: url,
+          },
+          success: function (response) {
+            for (let i = 0; i < response.length; i++) {
+              // 이미지 삽입
+              $(".img-data" + i).html(
+                '<img src="' + response[i].img + '" alt="Image">'
+              );
+              // href 삽입
+              $(".title" + i).html(
+                '<a href="' +
+                  response[i].href +
+                  '">' +
+                  response[i].title +
+                  "</a>"
+              );
+              // 요약 삽입
+              $(".content" + i).html(response[i].content);
+            }
+          },
+        });
+      }
+    });
+  </script>
+</html>
