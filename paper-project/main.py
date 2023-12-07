@@ -15,6 +15,18 @@ def index():
     return render_template('main.html')
 
 
+@app.route('/qna_start', methods=['POST'])
+def qnaStart():
+    # 이 변수에 지금 질문 내용 들어가 있어요
+    questionValue = request.form.get('questionValue') 
+    # 이 변수에 답변 담아주세요 덕형이형
+    answer = '답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>' 
+
+    
+
+    return answer
+    
+    
 @app.route('/get_newsList', methods=['POST'])
 async def selectNewsList():
     # url = "https://news.naver.com/main/list.naver?mode=LPOD&mid=sec&oid=020"

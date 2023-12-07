@@ -54,11 +54,90 @@
     <br />
 
     <div>
-      <!-- 상단 질문 답변 -->
-      <div class="qna-wrap">
-        <div calss="questions"></div>
-        <div class="answer"></div>
+      <div style="text-align: center">
+        <div style="max-width: 91%; margin: 0 auto">
+          <table
+            style="
+              border-collapse: collapse;
+              border: 2px solid #8734db;
+              border-radius: 10px;
+              overflow: hidden;
+              width: 100%;
+              margin: 20px 0;
+              font-size: 18px;
+            "
+          >
+            <tr
+              style="
+                background-color: #8734db;
+                color: #ffffff;
+                text-align: left;
+              "
+            >
+              <th style="padding: 15px; width: 50%">질문</th>
+              <th style="padding: 15px; width: 50%">답변</th>
+            </tr>
+            <tr>
+              <td
+                style="
+                  padding: 60px 15px;
+                  border-bottom: 1px solid #8734db;
+                  width: 50%;
+                  position: relative;
+                "
+              >
+                <textarea
+                  style="
+                    width: calc(100% - 30px);
+                    height: calc(100% - 30px);
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                  "
+                  id="question"
+                ></textarea>
+              </td>
+              <td
+                style="
+                  padding: 60px 15px;
+                  border-bottom: 1px solid #8734db;
+                  width: 50%;
+                  position: relative;
+                "
+              >
+                <div
+                  style="height: 100%; font-size: 12px"
+                  id="answer"
+                  class="answerRes"
+                >
+                  답변 내용
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align: center; padding: 20px">
+                <button
+                  style="
+                    background-color: #8734db;
+                    color: #ffffff;
+                    padding: 10px 20px;
+                    font-size: 16px;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                  "
+                  id="qnaBtn"
+                >
+                  질문하기
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
+
       <br />
       <!-- 결과창 1 -->
       <div
@@ -406,6 +485,29 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script>
     $(document).ready(function () {
+      // 질문하기 버튼 클릭 이벤트
+      $("#qnaBtn").click(function () {
+        var questionValue = $("#question").val();
+        if (
+          questionValue === null ||
+          questionValue === "" ||
+          questionValue === undefined ||
+          questionValue === " "
+        ) {
+          alert("질문 내용을 입력해주세요.");
+          return;
+        } else {
+          $.ajax({
+            type: "POST",
+            url: "qna_start",
+            data: { questionValue: questionValue },
+            success: function (response) {
+              $(".answerRes").html(response);
+            },
+          });
+        }
+      });
+
       // 경향신문 버튼 클릭 이벤트
       $("#gyeonghyang").click(function () {
         clickCategory(
