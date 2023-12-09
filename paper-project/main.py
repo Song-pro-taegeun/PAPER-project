@@ -4,7 +4,9 @@ import langchain
 import requests
 from bs4 import BeautifulSoup
 from collections import OrderedDict
-from article_service.app.tools.summary import reject_summarize, summarize
+from article_service.summary import reject_summarize, summarize
+from article_service.qa import qa
+from article_service.vector_store import init_chroma_vector_store, insert_vector_store
 import asyncio
 
 langchain.debug = True
@@ -20,11 +22,8 @@ def qnaStart():
     # 이 변수에 지금 질문 내용 들어가 있어요
     questionValue = request.form.get('questionValue') 
     # 이 변수에 답변 담아주세요 덕형이형
-    answer = '답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>' 
-
-    
-
-    return answer
+    # answer = '답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>답변이에요!!!<br>' 
+    return qa(questionValue)
     
     
 @app.route('/get_newsList', methods=['POST'])
@@ -111,16 +110,23 @@ async def selectNewsList():
     # 덕형이형 요 부분에 요약 태워야함 summaryList 이 배열에 담아야함
     # 본문은 realContentList이 배열에 10개가 담아져 있을거임.
     # for문 돌면서 담아야함.
-
-    # async 처리를 통해 비동기로 요약 요청
+    init_chroma_vector_store()
+    # async 처리를 통해 비동기로 요약 요청 + 임베딩 추가
     run_func=[]
     for content in realContentList:
         if content=="태그가 다릅니다.":
             run_func.append(reject_summarize())
+            run_func.append(reject_summarize())
         else:
             run_func.append(summarize(content))
-    summaryList = await asyncio.gather(*run_func)
-
+            run_func.append(insert_vector_store(content))
+    summaryList_temp = await asyncio.gather(*run_func)
+    i=0
+    summaryList=[]
+    for s in summaryList_temp:
+        if i%2==0:
+            summaryList.append(s)
+        i+=1
     # 테스트용 (원문과 요약 동시출력할 수 있도록 처리)
     real_sum=[]
     for r,s in zip(realContentList,summaryList):
@@ -137,9 +143,9 @@ async def selectNewsList():
         # 원문 출력
         # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : realContentList[i]}
         # 요약문 출력
-        # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : summaryList[i]}
+        item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : summaryList[i]}
         # 원문+요약문 출력
-        item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : real_sum[i]}
+        # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i], 'content' : real_sum[i]}
         # item = { 'title' : titleList[i], 'href': hrefList[i], 'img' : imgList[i]}
         data_list.append(item)
 
